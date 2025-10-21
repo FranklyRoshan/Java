@@ -1,0 +1,271 @@
+Java
+
+Java's Origins
+
+    Work on Java started in 1991
+    The goal: a new portable language
+    Original name: Oak
+    Original tagline: Write Once, Run Everywhere
+
+Principles of Java
+
+    Simple, object-oriented, and familiar
+    Robust and secure
+    Architecture-neutral and portable
+    High-performance
+    Interpreted, threaded, and dynamic
+
+Runtime Architecture
+
+    Java is an interpreted language.
+    It compiles to bytecode instead of machine language.
+    The compiled application is portable between platforms without recompiling.
+    
+    Custom-compiled bytecode
+    Core runtime and additional libraries
+    Java Virtual Machine (JVM)
+    Operating system
+
+
+Java Runtime Environment
+
+    Java SE Runtime Environment (JRE) includes JVM
+    Supported on Windows, Linux, OS X, and Solaris
+    Runs all Java applications: desktop, browser, and server
+    Must be updated regularly to keep up with security issues
+
+Java SE Development Kit (JDK)
+
+    Available at no cost from Oracle
+    Includes tools for compilation and packaging
+        java: runtime
+        javac: compiler
+        javadoc: docs builder
+        jar: archive builder
+
+
+Creating Java Classes
+
+    All code is defined in classes.
+    Classes are defined in source code files with.java extension.
+    The javac command compiles Java code into bytecode.
+    The java command runs compiled bytecode files.
+
+
+A Simple Java Class
+
+    Defined in Main.java
+    
+    // Package declaration
+    package com.example;
+
+    // Class declaration
+    public class Main {
+    
+    // Main method
+    public static void main(String[] args) {
+
+        Executable code
+        }
+    }
+
+
+Java Compared to JavaScript
+Java                                                    JavaScript
+Not compatible with previous languages                  Based on ECMAScript standard
+Compiled to bytecode                                    Not compiled-interpreted at runtime
+Calls to native functions go through JNI                No native function calls in browser sandbox
+Write once, run anywhere                                Broad compatibility: browsers and other runtimes
+Runs in a protected virtual machine (JVM)               Restricted to browser sandbox
+Managed memory access                                   Managed memory access
+Class-based inheritance                                 Prototype-based inheritance
+
+
+Java Compared to C++
+C++                                                     Java
+Compatible with C                                       Not compatible with previous languages
+Compiled to native machine language                     Compiled to bytecode
+Allows direct calls to native system libraries          Calls to native functions go through JNI
+Write once, compile anywhere                            Write once, run anywhere
+Exposes low-level system functions                      Runs in a protected virtual machine (JVM)
+Explicit memory management and pointers                 Managed memory access
+Multiple inheritance                                    Limited to single inheritance
+
+
+Case Sensitivity
+    Java is case sensitive.
+    All identifiers must be unique within their scopes.
+    These are different identifiers due to case.
+        firstname
+        firstName
+        FIRSTNAME
+
+
+White Space
+    White space doesn't affect interpretation of code.
+    Spaces, tabs, and line feeds are "collapsed" by compiler.
+    All statements must end with a semicolon (;).
+    System.out.println("Hello world");
+
+
+Identifiers and Keywords
+    Keywords can't be used as class or other identifiers:
+    https://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html
+
+    Class, method, field, and other names are identifiers.
+
+    Identifiers must start with alpha character or underscore.
+
+
+Identifier Conventions
+    Classes start with uppercase character.
+    class MyClass
+
+    Methods and variables start with lowercase character.
+    void doSomething (String withThis) { }
+
+    Constants are all uppercase.
+    public static final String FIRSTNAME="David";
+
+
+Automatic Memory Management
+    Memory for objects is allocated automatically.
+    Objects are created in heap memory.
+    As long as any variable references an object, it's retained.
+    When all references expire, the object is eligible for collection.
+
+When do references expire?
+    Variables local to methods or code blocks expire with scope.
+
+    void changeString() {
+        String localVar = "Won't be around for long!"; 
+        System.out.println("In function: " + localVar);
+    } 
+
+
+When do references expire?
+    Explicitly dereference variables with null keyword
+    String tempVar = "Won't be around for long!";
+    tempVar = null;
+
+
+System Methods
+    Methods System.gc() and Runtime.gc() can request garbage collection, 
+    but there is no guarantee it will happen.
+    If no memory is available for a newly requested object, system throws OutOfMemoryError.
+
+
+Setting Available Memory
+    Use command-line options to manage amount of available heap memory:
+    java -Xms256s HelloWorld        Initial heap size
+    java -Xmx256m HelloWorld        Maximum heap size
+    java -Xmn256n HelloWorld        Heap size for young generation objects
+
+    
+
+🧠 Heap Memory vs Stack Memory in Java
+Feature	                Stack Memory	                                    Heap Memory
+Purpose	                Stores method calls and local variables	            Stores objects and instance variables
+Memory Type	            Static memory (LIFO – Last In, First Out)	        Dynamic memory (allocated at runtime)
+Allocation	            Each thread gets its own stack	                    Shared among all threads
+Data Stored	            Primitive values and object references	            Actual objects (created with new)
+Access Speed	        Faster	                                            Slower (needs garbage collection)
+Lifetime	            Exists until the method finishes execution	        Exists until object is garbage collected
+Memory Management	    Managed automatically by Java (method call stack)	Managed by the Garbage Collector (GC)
+Error Type (if full)	StackOverflowError	                                OutOfMemoryError
+Example	                Method calls, local variables	                    Objects, arrays, strings, collections
+
+🔍 Quick Summary
+Concept	            Stack	            Heap
+Stores	            Local variables	    Objects
+Access	            Fast	            Slower
+Managed by          JVM (method calls)	Garbage Collector
+Shared by Threads	❌ No	           ✅ Yes
+Errors	            StackOverflowError	OutOfMemoryError
+
+/*  public class MemoryExample {
+        public static void main(String[] args) {
+            int a = 10;                    // Stored in stack
+            String name = "Frank";         // "Frank" is in heap (String pool)
+            Person p = new Person("John"); // 'p' (reference) in stack, object in heap
+        }
+    }
+
+    class Person {
+        String name;                      // Instance variable stored in heap
+
+        Person(String name) {
+            this.name = name;
+        }
+    }   */
+
+
+Stact memory - StackOverflowError → too many recursive calls (stack full)
+Heap memory  - OutOfMemoryError → too many objects created without GC cleanup
+
+💡 First, the basics — What is Heap Memory?
+Heap memory is the runtime memory used to store objects.
+When you use new in Java, the object is created in the heap.
+The JVM (Java Virtual Machine) manages it and runs Garbage Collection (GC) to free unused objects.
+
+⚙️ Why Control Heap Size?
+
+By default, JVM chooses the heap size based on system memory.
+However, developers often manually tune it using command-line options to:
+
+    Improve performance,
+    Prevent OutOfMemoryError,
+    Optimize Garbage Collection.
+
+
+🧾 Memory Layout Summary
+Memory Area	            Purpose
+Heap	                Stores all objects created with new. Managed by GC.
+Stack	                Stores method calls, local variables, references.
+Metaspace	            Stores class metadata (replaced PermGen since Java 8).
+Young Gen (via -Xmn)	Short-lived objects, frequently collected.
+Old Gen	                Long-lived objects, less frequent GC.
+
+
+🧠 Key JVM Memory Options
+
+1️⃣ -Xms → Initial Heap Size
+Specifies the starting size of the heap when the JVM starts.
+java -Xms256m HelloWorld
+
+    JVM starts with 256 MB of heap.
+    If your app needs more memory, JVM will increase heap up to -Xmx limit.
+    Setting a good Xms helps avoid frequent resizing during startup.
+
+2️⃣ -Xmx → Maximum Heap Size
+Specifies the maximum heap memory JVM can use.
+java -Xmx512m HelloWorld
+
+    The heap can grow up to 512 MB, but not beyond it.
+    If more memory is needed, and it exceeds this limit, JVM throws:
+    java.lang.OutOfMemoryError: Java heap space
+
+
+✅ Best practice:
+Usually, both -Xms and -Xmx are set to the same value for stable performance.
+Example:
+java -Xms512m -Xmx512m HelloWorld
+
+
+3️⃣ -Xmn → Young Generation Heap Size
+Specifies how much of the heap is allocated for the Young Generation (Eden + Survivor spaces).
+java -Xmn128m HelloWorld
+
+    This sets the size of the Young Generation to 128 MB.
+    Objects are first created in the Young Generation.
+    If they survive garbage collection, they move to the Old Generation.
+
+
+🧩 Example — Combining All:
+java -Xms256m -Xmx512m -Xmn128m HelloWorld
+
+Meaning:
+    Start with 256 MB heap,
+    Can grow up to 512 MB,
+    128 MB reserved for Young Generation.
+

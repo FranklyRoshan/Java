@@ -1,0 +1,11 @@
+To generate Javadoc in Eclipse:
+
+Write Javadoc comments in your code using /** ... */ above classes, methods, or fields.
+Go to Project → Generate Javadoc.
+Set the Javadoc command (e.g., javadoc.exe in your JDK’s bin folder).
+Select the project/packages to document.
+Choose visibility (Public, Protected, etc.).
+Set the destination folder for output.
+Add a document title and configure options (e.g., include @author, @version).
+Click Finish.
+The generated HTML docs will be in the destination folder — open index.html to view.
