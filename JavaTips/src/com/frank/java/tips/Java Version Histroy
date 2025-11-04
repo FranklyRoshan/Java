@@ -1,0 +1,114 @@
+-------------------------------------------------------------------------------------------------------------
+Version 			Release Date 	Notes							Key Features
+
+JDK 1.0				Jan 1996		
+J2SE 5.0			Sep 2004		5 releases in 8 years			Enhanced For loop, Generics, Enums, Autoboxing
+Java SE 8 (LTS)		Mar 2014		Most important Java release 	Functional Programming - Lambdas & Streams, Static methods in interface
+Java SE 9 			Sep 2017		4 release in 13 years			Modularization (Java platform module system)
+Java SE 10 			Mar 2018		Time-Based Release Versioning	
+Java SE 11 (LTS)	Sep 2018		Long Term Support Version
+Java SE 12			Mar 2019		
+...
+Java SE 16			Sep	2021										Record class
+...
+Java SE 21 (LTS)	Sep 2023		Long Term Support Version		Virtual Threads and sequenced collections		
+...
+Java SE 24			Mar 2025										Stream Gatherers
+Java SE 25 (LTS)	Sep 2025		Long Term Support Version			
+...
+
+All Java Versions - API Improvements, Performance and Garbage collection improvements
+LTS version for production
+
+-------------------------------------------------------------------------------------------------------------
+Modularization (Java platform module system)
+
+Introduced in Java 9
+
+Goals: 
+	Modularize JDK(Important)
+		rt.jar grew to 60+MB by Java 8
+	Modularize applications
+
+Modularizing JDK:
+C:\Users\Frank>java --version
+java 24.0.2 2025-07-15
+Java(TM) SE Runtime Environment (build 24.0.2+12-54)
+Java HotSpot(TM) 64-Bit Server VM (build 24.0.2+12-54, mixed mode, sharing)
+
+C:\Users\Frank>java --list-modules
+java.base@24.0.2
+java.compiler@24.0.2
+java.datatransfer@24.0.2
+java.desktop@24.0.2
+java.instrument@24.0.2
+java.logging@24.0.2
+java.management@24.0.2
+java.management.rmi@24.0.2
+java.naming@24.0.2
+java.net.http@24.0.2
+java.prefs@24.0.2
+java.rmi@24.0.2
+java.scripting@24.0.2
+java.se@24.0.2
+java.security.jgss@24.0.2
+java.security.sasl@24.0.2
+java.smartcardio@24.0.2
+java.sql@24.0.2
+java.sql.rowset@24.0.2
+java.transaction.xa@24.0.2
+java.xml@24.0.2
+java.xml.crypto@24.0.2
+jdk.accessibility@24.0.2
+jdk.attach@24.0.2
+jdk.charsets@24.0.2
+jdk.compiler@24.0.2
+jdk.crypto.cryptoki@24.0.2
+jdk.crypto.ec@24.0.2
+jdk.crypto.mscapi@24.0.2
+jdk.dynalink@24.0.2
+jdk.editpad@24.0.2
+jdk.graal.compiler@24.0.2
+jdk.graal.compiler.lib@24.0.2
+jdk.graal.compiler.management@24.0.2
+jdk.hotspot.agent@24.0.2
+jdk.httpserver@24.0.2
+jdk.incubator.vector@24.0.2
+jdk.internal.ed@24.0.2
+jdk.internal.jvmstat@24.0.2
+jdk.internal.le@24.0.2
+jdk.internal.md@24.0.2
+jdk.internal.opt@24.0.2
+jdk.internal.vm.ci@24.0.2
+jdk.jartool@24.0.2
+jdk.javadoc@24.0.2
+jdk.jcmd@24.0.2
+jdk.jconsole@24.0.2
+jdk.jdeps@24.0.2
+jdk.jdi@24.0.2
+jdk.jdwp.agent@24.0.2
+jdk.jfr@24.0.2
+jdk.jlink@24.0.2
+jdk.jpackage@24.0.2
+jdk.jshell@24.0.2
+jdk.jsobject@24.0.2
+jdk.jstatd@24.0.2
+jdk.localedata@24.0.2
+jdk.management@24.0.2
+jdk.management.agent@24.0.2
+jdk.management.jfr@24.0.2
+jdk.naming.dns@24.0.2
+jdk.naming.rmi@24.0.2
+jdk.net@24.0.2
+jdk.nio.mapmode@24.0.2
+jdk.sctp@24.0.2
+jdk.security.auth@24.0.2
+jdk.security.jgss@24.0.2
+jdk.unsupported@24.0.2
+jdk.unsupported.desktop@24.0.2
+jdk.xml.dom@24.0.2
+jdk.zipfs@24.0.2
+
+-------------------------------------------------------------------------------------------------------------
+
+
