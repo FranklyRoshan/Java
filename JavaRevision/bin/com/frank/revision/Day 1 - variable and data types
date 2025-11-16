@@ -1,0 +1,121 @@
+/*
+ * 1) Variables & Data Types
+ * 
+ * A variable is a name (identifier) bound to storage that holds a value. The
+ * data type defines what values the variable can hold and what operations are
+ * permitted. Languages differ on whether the type is declared (static typing)
+ * or inferred at runtime (dynamic typing). Types affect memory layout,
+ * performance, and semantics (e.g., integer overflow, immutability).
+ * -----------------------------------------------------------------------------
+ * 2) Primitive vs Non-primitive
+ * 
+ * Primitive types: built-in, directly represent simple values (numbers,
+ * boolean, character). Typically fixed-size and efficient.
+ * 
+ * primitives = byte, short, int, long, float, double, char, boolean. Primitives
+ * stored by value;
+ * 
+ * 
+ * Non-primitive / Reference types: objects, arrays, strings (in many languages
+ * strings are objects), user-defined types (classes/structs). Variables hold
+ * references/pointers to heap-allocated data (or value objects, depending on
+ * the language).
+ * 
+ * Non-primitive = String, arrays int[], classes, interfaces, enums.
+ * non-primitives are references to objects on heap. Java String is immutable
+ * object.
+ * 
+ * 
+ */
+-----------------------------------------------------------------------------------------
+3) Primitive types: sizes, ranges, literal forms Java — exact sizes and typical
+ ranges (Java guarantees sizes)
+  
+ Type       Size (bits)   Range (signed)                             Notes / literals
+ byte       8 bits        -128 to 127                                literal: (byte)100 or 100
+ short      16 bits       -32,768 to 32,767                           literal: (short)1000 or 1000
+ int        32 bits       -2,147,483,648 to 2,147,483,647           literal: 42, 0b1010, 0x2A, 042
+ long       64 bits       -9,223,372,036,854,775,808 to 9,223,...   literal: 42L or 42l
+ float      32 bits       single-precision IEEE 754                 literal: 3.14f or 3.14F
+ double     64 bits       double-precision IEEE 754                 literal: 3.14 (default)
+ char       16 bits       0 to 65535 (UTF-16 code unit)              literal: 'A' or '\u0041'
+ boolean    1 bit (logical) true/false                              literal: true, false
+ 
+Notes:
+Java char is unsigned 16-bit UTF-16 code unit.
+String is non-primitive and immutable.
+Numeric literals: underscores allowed 1_000_000; binary 0b1010; hex 0xFF; octal 077.
+int literal default, add L/l for long, F/f for float, D/d optional for double.
+ 
+-----------------------------------------------------------------------------------------
+4) Declaration, initialization, default values, scope
+Java
+
+Fields (class-level) have default values 
+(e.g., int default 0, boolean default false, object references default null).
+
+Local variables must be explicitly initialized before use (compiler error otherwise).
+
+Examples:
+
+Field: private int count; // default 0
+
+Local: int x; System.out.println(x); // compile error
+
+Scope: block scope ({}), method scope, class scope, package/private/protected/public modifiers
+-----------------------------------------------------------------------------------------
+5) Constants / immutability
+
+Java: use final to make a variable reference immutable; for primitives it makes value constant. 
+static final commonly used for constants.
+
+final int MAX = 100;
+static final double PI = 3.14159;
+-----------------------------------------------------------------------------------------
+6) Type conversion, promotion, casting & overflow
+Java
+
+Widening conversion (no explicit cast required): 
+byte -> short -> int -> long -> float -> double. char promotes to int in arithmetic.
+
+Narrowing conversion requires explicit cast and can lose data: 
+int -> short may truncate.
+
+Example:
+
+int i = 130;
+byte b = (byte) i; // results in -126 due to truncation (wrap)
+
+
+Integer overflow wraps (two's complement) but Java defines behavior (not UB).
+
+Numeric promotion in expressions: smaller types promoted to int before arithmetic; 
+e.g., byte + byte -> int.
+-----------------------------------------------------------------------------------------
+7) Boxing / Unboxing and equivalents
+
+Java: primitive wrapper classes: Byte, Short, Integer, Long, Float, Double, Character, Boolean. 
+Autoboxing/unboxing happens automatically in many contexts — be mindful of null.
+
+Integer x = 10; // autobox to Integer
+int y = x;      // unbox to int
+Integer z = null;
+int w = z; // NullPointerException on unboxing
+-----------------------------------------------------------------------------------------
+8) Special types: enums, null/None/nullptr, void, inferred types
+
+Java: enum is full class-like type. null for object references. var (since Java 10) for local variable type inference.
+
+enum Color { RED, GREEN, BLUE }
+var list = new ArrayList<String>(); // only local
+-----------------------------------------------------------------------------------------
+9) Memory & performance (brief but practical)
+
+Primitives are typically stack-allocated when local 
+(Java primitives stored on stack or as part of object fields on heap; objects always on heap).
+
+Reference types store references; dereferencing costs pointer indirection.
+-----------------------------------------------------------------------------------------
+
+
+ 

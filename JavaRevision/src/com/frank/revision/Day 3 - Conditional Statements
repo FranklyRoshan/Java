@@ -1,0 +1,157 @@
+Conditional statements
+
+Conditional statements let a program make decisions based on whether conditions are true or false.
+They control the flow of execution.
+-----------------------------------------------------------------------------------------
+
+⚙️ 1. Basic if Statement
+
+Used to execute a block only if the condition is true.
+
+// Java
+int age = 20;
+if (age >= 18) {
+    System.out.println("Eligible to vote");
+}
+-----------------------------------------------------------------------------------------
+
+⚙️ 2. if–else Statement
+
+Executes one block if true, another if false.
+
+// Java
+int num = 5;
+if (num % 2 == 0)
+    System.out.println("Even");
+else
+    System.out.println("Odd");
+-----------------------------------------------------------------------------------------
+    
+    
+⚙️ 3. Nested if
+
+if inside another if (use carefully; can reduce readability).
+
+// Java
+int num = 10;
+if (num > 0) {
+    if (num % 2 == 0)
+        System.out.println("Positive Even");
+}
+-----------------------------------------------------------------------------------------
+
+⚙️ 4. if–else if–else Ladder
+
+Used when checking multiple conditions sequentially.
+
+// Java
+int marks = 85;
+if (marks >= 90)
+    System.out.println("A Grade");
+else if (marks >= 75)
+    System.out.println("B Grade");
+else
+    System.out.println("C Grade");
+-----------------------------------------------------------------------------------------
+    
+⚙️ 5. switch / match Statement
+
+Used for multi-branch decision-making.
+
+// Java
+int day = 3;
+switch (day) {
+    case 1: System.out.println("Monday"); break;
+    case 2: System.out.println("Tuesday"); break;
+    case 3: System.out.println("Wednesday"); break;
+    default: System.out.println("Invalid Day");
+}
+-----------------------------------------------------------------------------------------
+
+⚙️ 6. Ternary Operator (Shortcut)
+
+Used for concise if–else operations.
+
+// Java
+int num = 10;
+String result = (num % 2 == 0) ? "Even" : "Odd";
+-----------------------------------------------------------------------------------------
+
+⚙️ 7. Edge Cases
+
+Floating point comparisons (avoid == for floats due to precision)
+Null checks in Java before comparison
+Indentation-sensitive syntax in Python
+Fall-through behavior in C++/Java switch (use break)
+
+
+| Feature              | Java                                   | C++                                   | Python                                  |
+|----------------------|----------------------------------------|---------------------------------------|------------------------------------------|
+| Basic Structure      | if, else if, else, switch              | if, else if, else, switch             | if, elif, else, match                    |
+| Boolean Condition    | Must return boolean                    | Can use any integral or bool          | Truthy or falsy expressions              |
+| Block Scope          | Uses braces `{}`                       | Uses braces `{}`                      | Uses indentation                         |
+| Switch Expression    | Added from Java 14 (arrow syntax)      | Classic switch                        | Introduced `match-case` from Python 3.10 |
+| Ternary Operator     | Yes (`? :`)                            | Yes (`? :`)                           | Yes (`x if cond else y`)                 |
+| Default Execution    | `default:` block                       | `default:` block                      | `case _:` block                          |
+| Fall-through Allowed | Yes, without `break`                   | Yes, without `break`                  | No (each case isolated)                  |
+-----------------------------------------------------------------------------------------
+
+
+🧠 Deep Dive Insights
+Java requires strictly boolean conditions (if (x) won’t compile if x isn’t boolean).
+C++ allows non-boolean conditions (if (5) is valid and true).
+Python treats 0, None, empty strings/lists as False.
+Switch vs if–else: Use switch for discrete values, if for ranges or complex conditions.
+Python match-case: pattern matching supports destructuring, not just value equality.
+-----------------------------------------------------------------------------------------
+
+⚙️ 1. Java 14+ Enhanced switch Expressions
+
+Traditional switch was a statement — it didn’t return a value.
+The enhanced version is an expression, meaning it can yield a value directly.
+
+✅ Syntax
+String day = "MON";
+String type = switch (day) {
+    case "MON", "TUE", "WED", "THU", "FRI" -> "Weekday";
+    case "SAT", "SUN" -> "Weekend";
+    default -> throw new IllegalArgumentException("Invalid day: " + day);
+};
+System.out.println(type);
+
+
+🔍 Key Features
+Arrow (->) replaces : and break.
+Multiple labels per case (like "MON", "TUE").
+Can return a value (unlike old switch).
+Supports yield keyword for block logic.
+
+int num = 3;
+String result = switch (num) {
+    case 1 -> "One";
+    case 2 -> "Two";
+    case 3 -> {
+        String s = "Three";
+        yield s + " (yielded)";
+    }
+    default -> "Unknown";
+};
+System.out.println(result);
+
+
+🧠 Why it matters: This design eliminates fall-through bugs and allows functional-style 
+decision making. Java finally caught up with expressive syntax while staying type-safe.
+
+| Feature / Language       | Java (>=14)                         | C++17+                                  | Python (>=3.10)                             |
+|--------------------------|-------------------------------------|-----------------------------------------|---------------------------------------------|
+| Syntax Type              | Expression-based switch             | Still statement-based                   | Structural pattern matching                 |
+| Fall-through             | Disallowed by default               | Allowed unless `break` used             | Not possible                                |
+| Multiple labels per case | Supported (case A, B ->)            | Supported via chained if                | Supported (A | B)                           |
+| Returns value            | Yes (expression form)               | No (but can simulate)                   | Yes (via variable assignment)               |
+| Works with strings       | Yes                                 | No (only integral types)                | Yes                                         |
+| Destructuring patterns   | No                                  | No                                      | Yes                                         |
+| Guards / Conditions      | No (use if before)                  | Yes (`if` chain)                        | Yes (`if` after case)                       |
+| Purpose                  | Safe, concise branching             | Compile-time control & performance      | Pattern-based logic matching                |
+-----------------------------------------------------------------------------------------
+
+

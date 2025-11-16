@@ -1,0 +1,147 @@
+
+Operators
+
+Operators are the building blocks of logic and computation in any language. 
+They perform operations on variables and values.
+
+We'll go through every type — arithmetic, relational, logical, bitwise, assignment, conditional, 
+and special operators.
+-----------------------------------------------------------------------------------------
+1. Categories of Operators
+
+| Category              | Description                               | Example                            |                         |        |
+| --------------------- | ----------------------------------------- | ---------------------------------- | ----------------------- | ------ |
+| Arithmetic            | Performs mathematical operations          | `+`, `-`, `*`, `/`, `%`            |                         |        |
+| Relational            | Compares two values                       | `==`, `!=`, `>`, `<`, `>=`, `<=`   |                         |        |
+| Logical               | Combines boolean expressions              | `&&`, `||`, `!`                            |                         | `, `!` |
+| Bitwise               | Works on bits                             | `&`, `                             | `, `^`, `~`, `<<`, `>>` |        |
+| Assignment            | Assigns values                            | `=`, `+=`, `-=`, `*=`, `/=`, `%=`  |                         |        |
+| Conditional / Ternary | Short-form if-else                        | `condition ? value1 : value2`      |                         |        |
+| Increment / Decrement | Increases or decreases value              | `++`, `--`                         |                         |        |
+| Special               | Includes type, membership, identity, etc. | `instanceof` (Java), `is` (Python) |                         |        |
+-----------------------------------------------------------------------------------------
+2. Arithmetic Operators
+🧠 Note:
+Division / in Python 3 always gives a float, while // gives integer division.
+In Java and C++, integer division truncates decimals.
+-----------------------------------------------------------------------------------------
+3. Relational Operators
+| Language | Example                     | Description                                                         |
+| -------- | --------------------------- | ------------------------------------------------------------------- |
+| Java     | `a > b`, `a == b`, `a != b` | Compares numbers or objects (use `.equals()` for strings)           |
+| C++      | `a > b`, `a == b`           | Works for primitive types; custom objects need operator overloading |
+| Python   | `a > b`, `a == b`           | Can chain: `a < b < c`                                              |
+-----------------------------------------------------------------------------------------
+Comparison method: Logical Operator (==)
+What it compares: Memory Addresses (References)
+Use Case: Use for primitive types (like int, boolean, char) to check if their values 
+are identical. Avoid for Objects (like Strings).
+
+Comparison method: .equals() Method
+What it compares: Actual Character Content (Value)
+Use Case: Use for Objects (like String, Date, List) to check if the data they hold is 
+logically equivalent. Always use this for Strings.
+-----------------------------------------------------------------------------------------
+4. Logical Operators
+| Operator     | Meaning     | Example (Java/C++)  | Example (Python)     |        
+| ------------ | ----------- | ------------------- | -------------------- | 
+| `&&` / `and` | Logical AND | `(a > 5 && b < 10)` | `(a > 5 and b < 10)` |        
+| `||` / `or`  | Logical OR  | `(a > 5 || b < 10)` | `(a > 5 or b < 10)`  |
+| `!` / `not`  | Logical NOT | `!(a > 5)`          | `not (a > 5)`        |         
+-----------------------------------------------------------------------------------------
+5. Bitwise Operators
+
+Work on bits, not numerical values directly.
+| Operator | Description | Example                      |   
+| -------- | ----------- | ---------------------------- | 
+| `&`      | Bitwise AND | `5 & 3 → 1`                  |    
+| `|`      | Bitwise OR  | `5 | 3 → 7`                  |
+| `^`      | XOR         | `5 ^ 3 → 6`                  |  
+| `~`      | Bitwise NOT | `~5 → -6` (Two’s complement) |    
+| `<<`     | Left shift  | `5 << 1 → 10`                |    
+| `>>`     | Right shift | `5 >> 1 → 2`                 |   
+
+🧠 Language Note:
+Java and C++ handle >> as arithmetic shift for signed integers.
+Java also has >>> (unsigned right shift). Python lacks >>>.
+-----------------------------------------------------------------------------------------
+6. Assignment Operators
+| Example  | Meaning     |
+| -------- | ----------- |
+| `a += 5` | `a = a + 5` |
+| `a -= 5` | `a = a - 5` |
+| `a *= 5` | `a = a * 5` |
+| `a /= 5` | `a = a / 5` |
+| `a %= 5` | `a = a % 5` |
+-----------------------------------------------------------------------------------------
+7. Increment / Decrement Operators
+| Language | Example         | Notes                          |
+| -------- | --------------- | ------------------------------ |
+| Java     | `a++`, `++a`    | Post & pre increment supported |
+| C++      | `a++`, `++a`    | Same as Java                   |
+| Python   | ❌ Not available | Use `a += 1` or `a -= 1`       |
+-----------------------------------------------------------------------------------------
+8. Conditional (Ternary) Operator
+| Language | Syntax                                 | Example                         | Output        |
+| -------- | -------------------------------------- | ------------------------------- | ------------- |
+| Java     | `condition ? true_val : false_val`     | `int result = (a > b) ? a : b;` | Larger number |
+| C++      | Same as Java                           | `int max = (a > b) ? a : b;`    | Larger number |
+| Python   | `true_val if condition else false_val` | `result = a if a > b else b`    | Larger number |
+-----------------------------------------------------------------------------------------
+9. Special Operators
+| Language | Operator           | Meaning                       |
+| -------- | ------------------ | ----------------------------- |
+| Java     | `instanceof`       | Checks object type            |
+| C++      | `sizeof`, `typeid` | Memory size and type info     |
+| Python   | `is`, `in`         | Identity and membership tests |
+
+// Java
+Object obj = "Hello!";
+if (obj instanceof String) System.out.println("It's a string!");
+
+// C++
+cout << sizeof(int) << endl; // 4 bytes
+
+# Python
+if "a" in "apple":
+    print("Found!")
+-----------------------------------------------------------------------------------------
+10. Operator Precedence & Associativity
+
+| Precedence Level | Operators            | Associativity | 
+| ---------------- | -------------------- | ------------- | 
+| Highest          | `()`, `[]`, `.`      | Left to Right | 
+| Unary            | `++`, `--`, `!`, `~` | Right to Left | 
+| Multiplicative   | `*`, `/`, `%`        | Left to Right | 
+| Additive         | `+`, `-`             | Left to Right | 
+| Relational       | `<`, `>`, `<=`, `>=` | Left to Right |
+| Equality         | `==`, `!=`           | Left to Right |
+| Logical          | `&&`, `||`, `!`      | Left to Right |
+| Assignment       | `=`, `+=`, `-=`      | Right to Left |
+
+BODMAS and PEMDAS are acronyms for the order of operations in mathematics, used to ensure consistent evaluation of expressions.
+
+BODMAS (used in the UK, India, and Commonwealth countries):
+Brackets, Orders (exponents, roots), Division, Multiplication, Addition, Subtraction
+
+PEMDAS (used in the US):
+Parentheses, Exponents, Multiplication, Division, Addition, Subtraction 
+Despite the different names, they represent the same rule:
+
+Multiplication and division have equal precedence and are performed left to right.
+Addition and subtraction have equal precedence and are also performed left to right.
+-----------------------------------------------------------------------------------------
+11. Common Mistakes & Notes
+
+| Mistake                              | Explanation                                       |                       
+| ------------------------------------ | ------------------------------------------------- |
+| `a = b == c` confusion               | `==` evaluated first; use parentheses for clarity |                       
+| Mixing bitwise and logical           | `&` and `|`are bitwise;`&&`and `||` are logical   |
+| Integer division in Python           | Use `//` for integer division                     |                       
+| Using `is` instead of `==` in Python | `is` checks identity, not equality                |                       
+-----------------------------------------------------------------------------------------
+
+
+
+
+
