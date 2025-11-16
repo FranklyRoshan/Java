@@ -175,3 +175,5 @@ Streams transform looping from a manual crank to a flowing river.
 | Range-based looping   | Enhanced for-each                           | Range-based for loop (`for(auto x : ...)`)  | Native for-in                                   |
 | Infinite looping      | Streams (controlled), while(true)           | while(true), itertools (C++20)              | itertools.count(), while True                  |
 | Parallel support      | parallelStream()                            | std::execution                              | multiprocessing, itertools cycles              |
+-----------------------------------------------------------------------------------------
+
