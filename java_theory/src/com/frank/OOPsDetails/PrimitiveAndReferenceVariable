@@ -1,0 +1,24 @@
+How is a reference variable different from a primitive variable? #
+
+A reference variable stores the memory location of an object, while a primitive variable directly stores a value.
+
+// Primitive variable stores the actual value 5
+int i = 5; 
+
+// Reference variable stores the memory location of the object
+Animal dog = new Animal(12);
+Primitive variables are stored in the stack memory.
+Reference variables are stored in the stack, but the objects they refer to are stored in the heap memory.
+What happens when you assign a reference variable to another?
+When a reference variable is assigned to another, only the memory location (reference) is copied, not the actual object.
+Example:
+Animal cat = new Animal(15);
+Animal nothing = cat; // Copies reference, not the object
+Both cat and nothing now point to the same object in memory.
+Since reference variables point to the same object, modifying the object through one reference affects all references pointing to it.
+Example:
+nothing.id = 10;
+
+// Output: 10
+System.out.println(cat.id);
+Since nothing and cat refer to the same object, changing nothing.id also updates cat.id.
